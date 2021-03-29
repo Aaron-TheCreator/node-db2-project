@@ -1,10 +1,5 @@
 const db = require('../../data/db-config.js');
 
-module.exports = {
-  getAll,
-  getById,
-  create
-}
 
 const getAll = () => {
   return db('cars');
@@ -16,6 +11,13 @@ const getById = (id) => {
 }
 
 const create = async (newCar) => {
+  
   const car = await db('cars').insert(newCar);
-  return car;
+  return newCar, car;
+}
+
+module.exports = {
+  getAll,
+  getById,
+  create
 }
